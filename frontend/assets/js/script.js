@@ -13,7 +13,7 @@ async function cargarDatos() {
 
         contenedor.className = 'row g-4'; // Clase de Bootstrap para el diseño responsivo.
         datos.forEach(item => {
-            const col = document.createElement('div');
+            const col = document.createElement('article');
             col.className = 'col-sm-5 col-md-4 col-lg-3 d-flex justify-content-center'; // Clases de Bootstrap para el diseño responsivo.
 
             const row = document.createElement('div');
@@ -67,7 +67,7 @@ async function cargarDatos() {
         });
     } catch (error) {
         const contenedor = document.getElementById('cardsContainer');
-        const errorMessage = document.createElement('div');
+        const errorMessage = document.createElement('article');
         errorMessage.className = 'alert alert-danger';
         errorMessage.textContent = 'Error al cargar los datos.';
         contenedor.appendChild(errorMessage); // Muestra un mensaje de error si falla la carga de datos.
@@ -159,6 +159,52 @@ async function resetFilters() {
     delete card.dataset.idMatch;
     delete card.dataset.typeMatch;
   });
+}
+
+async function recargarDatos() {
+    try {
+        const res = await fetch('/api/datos');
+        const datos = await res.json();
+
+        const contenedor = document.getElementById('cardsContainer');
+        contenedor.innerHTML = ''; // ✅ Clears previous cards before rendering new ones
+
+        contenedor.className = 'row g-4';
+
+        datos.forEach(item => {
+            const col = document.createElement('div');
+            col.className = 'col-sm-6 col-md-4 col-lg-3 d-flex justify-content-center';
+
+            const card = document.createElement('div');
+            card.className = 'card h-100 shadow-sm';
+            card.style = "width: 100%; max-width: 18rem;";
+
+            const cardBody = document.createElement('div');
+            cardBody.className = 'card-body text-center';
+
+            const title = document.createElement('h5');
+            title.className = 'card-title';
+            title.textContent = item.nombre;
+
+            const id = document.createElement('p');
+            id.className = 'card-text';
+            id.textContent = `ID: ${item.id}`;
+
+            const type = document.createElement('p');
+            type.className = 'card-text';
+            type.textContent = `Tipo: ${item.tipo}`;
+
+            cardBody.appendChild(title);
+            cardBody.appendChild(id);
+            cardBody.appendChild(type);
+            card.appendChild(cardBody);
+            col.appendChild(card);
+            contenedor.appendChild(col);
+        });
+
+    } catch (error) {
+        console.error('Error al cargar los datos:', error);
+    }
 }
 
 document.getElementById('typeSelect').addEventListener('change', applyFilterByType);
