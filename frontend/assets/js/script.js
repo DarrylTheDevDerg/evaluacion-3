@@ -2,6 +2,7 @@ async function unlockControls() {
       document.getElementById('filterInput').disabled = false;
       document.getElementById('filterBtn').disabled = false;
       document.getElementById('resetBtn').disabled = false;
+      document.getElementById('typeSelect').disabled = false;
 }
 
 async function cargarDatos() {
@@ -88,47 +89,76 @@ button.addEventListener('click', () => {
     }, 10); // Espera 1 segundo antes de cargar los datos.
 });
 
-async function initCardFilter() {
-  const filterBtn = document.getElementById('filterBtn');
-  const resetBtn = document.getElementById('resetBtn');
-  const input = document.getElementById('filterInput');
+async function filterById(id) {
   const cards = document.querySelectorAll('.card');
-  const container = document.getElementById('cardContainer');
 
-  const filterCards = async () => {
-    const inputValue = input.value.trim();
-    const targetId = `card-${inputValue}`;
-    let found = false;
-
-    cards.forEach(card => {
-      if (card.id === targetId) {
-        card.style.display = 'block';
-        found = true;
-      } else {
-        card.style.display = 'none';
-      }
-    });
-
-    if (found) {
-      container.classList.add('centered');
-    }
-  };
-
-  const resetCards = async () => {
-    cards.forEach(card => {
-      card.style.display = 'block';
-    });
-
-    input.value = '';
-    container.classList.remove('centered');
-  };
-
-  filterBtn.addEventListener('click', async () => {
-    await filterCards();
-  });
-
-  resetBtn.addEventListener('click', async () => {
-    await resetCards();
+  cards.forEach(card => {
+    const isMatch = id ? card.id === `card-${id}` : true;
+    card.dataset.idMatch = isMatch;
   });
 }
 
+async function filterByType(type) {
+  const cards = document.querySelectorAll('.card');
+
+  cards.forEach(card => {
+    const text = card.textContent.toLowerCase();
+    const indexCut = text.indexOf(`tipo: ${type.toLowerCase()}`)
+
+    const cutText = text.slice(indexCut, text.length);
+
+    console.log(cutText);
+
+    const isMatch = type ? text.includes(`tipo: ${type.toLowerCase()}`) : true;
+    card.dataset.typeMatch = isMatch;
+  });
+}
+
+async function initCardFilter() {
+  const idValue = document.getElementById('filterInput').value.trim();
+  const cards = document.querySelectorAll('.card');
+
+  await filterById(idValue);
+
+  cards.forEach(card => {
+    const idMatch = card.dataset.idMatch === "true";
+
+    if (idMatch) {
+      card.style.display = 'block';
+    } else {
+      card.style.display = 'none';
+    }
+  });
+}
+
+async function applyFilterByType()
+{
+  const typeValue = document.getElementById('typeSelect').value;
+  const cards = document.querySelectorAll('.card');
+
+  await filterByType(typeValue);
+
+  cards.forEach(card => {
+    const typeMatch = card.dataset.typeMatch === "true";
+
+    if (typeMatch) {
+      card.style.display = 'block';
+    } else {
+      card.style.display = 'none';
+    }
+  });
+}
+
+async function resetFilters() {
+  const cards = document.querySelectorAll('.card');
+  document.getElementById('filterInput').value = '';
+  document.getElementById('typeSelect').value = '';
+
+  cards.forEach(card => {
+    card.style.display = 'block';
+    delete card.dataset.idMatch;
+    delete card.dataset.typeMatch;
+  });
+}
+
+document.getElementById('typeSelect').addEventListener('change', applyFilterByType);

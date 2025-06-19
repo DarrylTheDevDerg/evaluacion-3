@@ -13,11 +13,20 @@
     <title>Datos de Minecraft</title>
 </head>
 <body class = "background">
-    <div class = "container my-1" style="align-items: center; justify-content: center;">
+    <div class = "container" style="align-items: center; justify-content: center;">
         <button id = "loadDataButton" onclick="cargarDatos();" class="btn btn-primary mb-3" style="display: inline-block; align-items: center;">Cargar Datos</button>
+
         <input type="number" id="filterInput" placeholder="Buscar por nombre o ID" class="form-control mb-3" style="width: 300px; display: inline-block;" disabled>
         <button id="filterBtn" onclick="initCardFilter();" class="btn btn-secondary mb-3" disabled>Search!</button>
-        <button id="resetBtn" onclick="initCardFilter();" class="btn btn-secondary mb-3" disabled>Reset!</button>
+        <button id="resetBtn" onclick="resetFilters();" class="btn btn-secondary mb-3" disabled>Reset!</button>
+
+        <label for="typeSelect" class="form-label">Filter by Type:</label>
+        <select class="form-select" id="typeSelect" onclick="filterByType();">
+            <option value="">Todos</option>
+            <option value="Solido">Solido</option>
+            <option value="Liquido">Liquido</option>
+            <option value="No solido">No solido</option>
+        </select>
     </div>
 
     <div class="container my-4">
