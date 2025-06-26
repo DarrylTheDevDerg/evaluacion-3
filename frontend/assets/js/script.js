@@ -65,7 +65,7 @@ function renderCards(datos) {
         // Tipo de objeto, determinando si es Sólido, No sólido, Líquido o Ítem.
         const type = document.createElement('p');
         type.className = 'card-text';
-        type.textContent = `Tipo: ${item.tipo}`;
+        type.textContent = `Type: ${item.tipo}`;
         type.style = "color: aliceblue;";
 
         // La imagen del objeto, con una condicional que permite asignar un GIF si el ID es 11, o una imagen PNG para los demás IDs.
@@ -105,7 +105,7 @@ function applyFilters() {
 
     // Filtrado de los datos, según el tipo y la ID.
     if (type) {
-        filtered = filtered.filter(item => item.tipo === type); // Filtra por tipo de objeto (Sólido, No sólido, Líquido o Ítem).
+        filtered = filtered.filter(item => item.tipo === type); // Filtra por tipo de objeto (Solid, Non-Solid, Liquid o Ítem).
     }
 
     if (id) {

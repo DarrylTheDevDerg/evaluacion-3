@@ -13,30 +13,30 @@
     <!-- PNG favicon -->
     <link rel="icon" href="/assets/img/favicon.ico" type="icon/ico">
 
-    <title>Datos de Minecraft</title>
+    <title>Minecraft Items</title>
 </head>
 
 <!-- Cabecera de la página, contiene los filtros y el botón para cargar los datos. -->
 <header class = "background-2" style = "display: block;">
-    <h1 style="text-align: center; font-weight: bolder; color: aliceblue;">Datos de Minecraft</h1>
+    <h1 style="text-align: center; font-weight: bolder; color: aliceblue;">Minecraft Items</h1>
 
     <nav style="align-items: center; justify-content: center;">
         <!-- Botón para cargar datos, desbloquea también las opciones para filtrar. -->
         <div class = "container">
-            <button id = "loadDataButton" onclick="cargarDatos();" class="btn btn-primary mb-3" style="display: inline-block; align-items: center;">Cargar Datos</button>
+            <button id = "loadDataButton" onclick="cargarDatos();" class="btn btn-primary mb-3" style="display: inline-block; align-items: center;">Load Data!</button>
 
-            <input type="number" id="filterID" placeholder="Buscar por nombre o ID" class="form-control mb-3" style="width: 300px; display: inline-block;" disabled>
+            <input type="number" id="filterID" placeholder="Search through ID number." class="form-control mb-3" style="width: 300px; display: inline-block;" disabled>
             <button id="resetFilter" onclick="resetFilters();" class="btn btn-secondary mb-3" disabled>Reset!</button>
         </div>
 
         <!-- Filtrado por tipo, dividido en Solidos, no solidos, liquidos e items. -->
         <div class = "container">
-            <label for="filterType" class="form-label" style="color: aliceblue;">Filtro por tipo:</label>
+            <label for="filterType" class="form-label" style="color: aliceblue;">Filter by Type:</label>
             <select class="form-select" id="filterType" disabled>
-                <option value="">Todos</option>
-                <option value="Solido">Solido</option>
-                <option value="Liquido">Liquido</option>
-                <option value="No solido">No solido</option>
+                <option value="">All</option>
+                <option value="Solid">Solid</option>
+                <option value="Liquid">Liquid</option>
+                <option value="Non-Solid">Non-Solid</option>
                 <option value="Item">Item</option>
             </select>
         </div>
@@ -65,7 +65,7 @@
 
     <p style="text-align: center; color: aliceblue;">Made by Pau Peña.</p>
     <p style="text-align: center; color: aliceblue;">Images are from <a href="https://minecraft.wiki/" target="_blank" rel="noopener noreferrer">the Minecraft Wiki.</a></p>
-    <p style="text-align: center; color: aliceblue;">IDs are from <a href="https://minecraft-ids.grahamedgecombe.com/" target="_blank" rel="noopener noreferrer">the Minecraft ID page.</a></p>
+    <p style="text-align: center; color: aliceblue;">IDs are from <a href="https://minecraft-ids.grahamedgecombe.com/" target="_blank" rel="noopener noreferrer">this Minecraft ID page.</a></p>
 </footer class = "background-2-end">
 
 </html>

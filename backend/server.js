@@ -16,7 +16,7 @@ app.use('/assets', express.static(path.join(__dirname, '../frontend/assets')));
 const conexion = mysql.createConnection({
   host: 'localhost',
   user: 'root',
-  password: 'root123',
+  password: 'root',
   database: 'datos'
 });
 
