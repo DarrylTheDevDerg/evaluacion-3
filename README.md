@@ -1,6 +1,6 @@
-# evaluacion-3
+# Como preparar la página web
+(se puede usar tanto CMD como PowerShell para ejecutar):
 
-Como preparar la página web (se puede usar tanto CMD como PowerShell para ejecutar ):
 0.- Requerimientos y preparativos:
     Se debe tener Node.js instalado para poder correr comandos como "npm" y "node", esenciales para lograr correr la página web sin mucho problema, y se debe de inicializar la base de datos SQL "datos" de antemano, así para evitar el error de "ER_BAD_DB_ERROR" debido a intentar acceder una base de datos que no existe o no ha sido inicializada.
 
@@ -20,6 +20,7 @@ Como preparar la página web (se puede usar tanto CMD como PowerShell para ejecu
     Se pueden revisar los datos de la base a través de http://localhost:3000/api/datos en Thunder Client, viendosé en forma de un archivo .JSON, el cual es usado para poder acceder a los datos contenidos.
 
 En caso de errores:
+    
     "ER_BAD_DB_ERROR": La base de datos SQL no ha sido inicializada, se debe correr el script donde se contienen los datos para inicializar la base de datos sin problemas.
 
     "ER_ACCESS_DENIED_ERROR": La contraseña usada para acceder al servidor SQL es incorrecta, y se debe arreglar desde el script de "server.js".
