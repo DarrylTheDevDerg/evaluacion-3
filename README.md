@@ -8,7 +8,7 @@
 - En la carpeta raíz de la página, se debe ejecutar el comando "npm init -y", para preparar un package.json donde se van a determinar los paquetes de los cuales dependerá la página web.
 
 2.- Instalación de módulos necesarios:
-- Tras haber creado e inicializado el package.json, se ejecuta el comando "npm install express mysql2 cors", instalando todos los módulos necesarios (entre ellos, CORS, mySQL y el framework Express), creandose la carpeta "node_modules" los cuales son necesarios para que funcione la página web y para que el script del servidor pueda acceder a la base de datos SQL y recibir los datos de allí.
+- Tras haber creado e inicializado el package.json, se ejecuta el comando "npm install express mysql2 cors", instalando todos los módulos necesarios (entre ellos, CORS, mySQL y el framework Express), creandose la carpeta "node_modules" los cuales son necesarios para que funcione la página web y para que el script del servidor pueda acceder a la base de datos SQL y recibir los datos de allí, las dependencias inmediatamente serán escritas en el package.json antes mencionado y también se creará un package_lock.json para finalizar la escritura de dependencias.
 
 3.- Correr:
 - Una vez finalizada la instalación de los módulos, se debe correr el comando "cd backend" para mover la terminal hacia el backend de la página, y finalmente correr el comando "node server.js" para levantar la página web.

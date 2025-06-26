@@ -22,17 +22,17 @@ const conexion = mysql.createConnection({
 
 conexion.connect(err => {
   if (err) {
-    console.error('Error de conexión a MySQL:', err);
+    console.error('¡Error de conexión a MySQL! :', err);
     return;
   }
-  console.log('Conexión a MySQL exitosa');
+  console.log('¡Exito! Conectado a la base de datos MySQL.');
 });
 
 app.get('/api/datos', (req, res) => {
   conexion.query('SELECT * FROM bloques', (err, resultados) => {
     if (err) {
       console.error(err);
-      res.status(500).send('Error al consultar la base de datos');
+      res.status(500).send('Error al consultar la base de datos.');
       return;
     }
     res.json(resultados);
@@ -45,7 +45,7 @@ app.get('/', (req, res) => {
 
 app.listen(port, () => {
 
-  console.log(`Servidor Express en http://localhost:${port}`);
+  console.log(`Servidor Express levantado en http://localhost:${port}`);
 });
 
 
