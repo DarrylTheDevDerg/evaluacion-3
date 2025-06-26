@@ -1,5 +1,5 @@
 # Como preparar la página web
-(se puede usar tanto CMD como PowerShell para ejecutar):
+(Solo se requiere CMD):
 
 0.- Requerimientos y preparativos:
 - Se debe tener Node.js instalado para poder correr comandos como "npm" y "node", esenciales para lograr correr la página web sin mucho problema, y se debe de inicializar la base de datos SQL "datos" de antemano, así para evitar el error de "ER_BAD_DB_ERROR" debido a intentar acceder una base de datos que no existe o no ha sido inicializada.
